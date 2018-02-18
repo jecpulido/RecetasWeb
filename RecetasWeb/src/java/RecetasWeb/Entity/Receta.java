@@ -6,6 +6,7 @@
 package RecetasWeb.Entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 
 /**
@@ -15,7 +16,7 @@ import java.io.Serializable;
 public class Receta implements Serializable{
     
     private String nombre;
-    private String[] ingredientes;
+    private ArrayList<String> ingredientes;
     private String descripcion;
     private int tiempoCoccion;
 
@@ -27,11 +28,11 @@ public class Receta implements Serializable{
         this.nombre = nombre;
     }
 
-    public String[] getIngredientes() {
+    public ArrayList<String> getIngredientes() {
         return ingredientes;
     }
 
-    public void setIngredientes(String[] ingredientes) {
+    public void setIngredientes(ArrayList<String> ingredientes) {
         this.ingredientes = ingredientes;
     }
 

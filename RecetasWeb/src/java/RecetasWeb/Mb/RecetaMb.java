@@ -105,10 +105,9 @@ public class RecetaMb {
     public void agregarReceta() {
         try {
             if (objReceta != null) {
-                objReceta.setIngredientes(ingredientes.split(","));
-                for (String ingre : objReceta.getIngredientes()) {
-                    ingre = ingre.trim();
-                }
+                //Se asigna array de ingredientes a la propiedad
+                objReceta.setIngredientes(obtenerIngredientes(ingredientes));
+                //Se guarda receta
                 recetaEJB.agregarReceta(objReceta);
                 objReceta = null;
                 ingredientes = "";
@@ -118,6 +117,19 @@ public class RecetaMb {
             System.out.println("" + e.getMessage());
         }
 
+    }
+    
+    /*
+    * Obtiene los ingredientes que el usuario digito 
+    * devuelve un arraylist con todos los ingredientes
+    */
+    private ArrayList obtenerIngredientes(String cadenaIngredientes){
+        ArrayList<String> ArrayIngre = new ArrayList<>();
+        String[] ArreloIngre = cadenaIngredientes.split(",");
+        for (String newIngre : ArreloIngre) {            
+            ArrayIngre.add(newIngre.trim());
+        }
+        return ArrayIngre;
     }
 
 }
