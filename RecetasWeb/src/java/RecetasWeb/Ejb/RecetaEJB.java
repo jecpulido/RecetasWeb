@@ -48,4 +48,9 @@ public class RecetaEJB implements RecetaEJBLocal {
         }
     }
 
+    @Override
+    public ArrayList<Receta> buscarPorIngredientes(ArrayList<String> ingredientes) {
+        return recetas;
+    }
+
 }

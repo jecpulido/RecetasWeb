@@ -22,5 +22,5 @@ public interface RecetaEJBLocal {
 //    Metodo para listar las recetas que se hn almacenado    
     public ArrayList<Receta> listarRecetas();
     
-    
+    public ArrayList<Receta> buscarPorIngredientes(ArrayList<String> ingredientes);
 }

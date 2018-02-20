@@ -63,7 +63,8 @@ public class RecetaMb {
     }
 
     /*
-    *Metodo Set de alRecetas
+    *Metodo Set de al Recetas
+    hola
     */
     public void setAlRecetas(ArrayList<Receta> alRecetas) {
         this.alRecetas = alRecetas;
@@ -131,5 +132,16 @@ public class RecetaMb {
         }
         return ArrayIngre;
     }
+    
+    public Receta ObtenerRecetaModulo5(String name){
+        Receta recetaObtenida = new Receta();
+        for (int i = 0; i < this.alRecetas.size(); i++) {
+            if(name.equalsIgnoreCase(this.alRecetas.get(i).getNombre())){
+                recetaObtenida = this.alRecetas.get(i);
+            }
+        }
+        return recetaObtenida;
+    }
 
+    
 }
