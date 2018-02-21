@@ -133,8 +133,9 @@ public class RecetaMb {
         return ArrayIngre;
     }
     
-    public Receta ObtenerRecetaModulo5(String name){
+    public Receta ObtenerRecetaModulo5(){
         Receta recetaObtenida = new Receta();
+        String name=this.objReceta.getNombre();
         for (int i = 0; i < this.alRecetas.size(); i++) {
             if(name.equalsIgnoreCase(this.alRecetas.get(i).getNombre())){
                 recetaObtenida = this.alRecetas.get(i);
