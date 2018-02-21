@@ -64,21 +64,21 @@ public class RecetaMb {
 
     /*
     *Metodo Set de alRecetas
-    */
+     */
     public void setAlRecetas(ArrayList<Receta> alRecetas) {
         this.alRecetas = alRecetas;
     }
 
     /*
     *Metodo Get de objReceta
-    */
+     */
     public Receta getObjReceta() {
         return objReceta;
     }
 
     /*
     *Metodo Set de objReceta
-    */
+     */
     public void setObjReceta(Receta objReceta) {
         this.objReceta = objReceta;
     }
@@ -101,7 +101,7 @@ public class RecetaMb {
     * Metodo agregaReceta
     * Valida la informacion que se captura en el campo ingredientes,
     * la cual se convierte en un array y se asigna a la propiedad de receta
-    */
+     */
     public void agregarReceta() {
         try {
             if (objReceta != null) {
@@ -118,18 +118,47 @@ public class RecetaMb {
         }
 
     }
-    
+
     /*
     * Obtiene los ingredientes que el usuario digito 
     * devuelve un arraylist con todos los ingredientes
-    */
-    private ArrayList obtenerIngredientes(String cadenaIngredientes){
+     */
+    private ArrayList obtenerIngredientes(String cadenaIngredientes) {
         ArrayList<String> ArrayIngre = new ArrayList<>();
         String[] ArreloIngre = cadenaIngredientes.split(",");
-        for (String newIngre : ArreloIngre) {            
+        for (String newIngre : ArreloIngre) {
             ArrayIngre.add(newIngre.trim());
         }
         return ArrayIngre;
+    }
+
+    
+    
+    //Lista de recetas encntradas en busqueda
+    private ArrayList<Receta> recetaBusqueda;
+
+    //Metodo Get de recetaBusqueda
+    public ArrayList<Receta> getRecetaBusqueda() {
+        return recetaBusqueda;
+    }
+
+    //Metodo Set de recetaBusqueda
+    public void setRecetaBusqueda(ArrayList<Receta> recetaBusqueda) {
+        this.recetaBusqueda = recetaBusqueda;
+    }   
+    
+    /*
+    *Metodo para la consulta de recetas por nombre o por tiempo
+    * devuelve un array de recetas
+     */
+    public ArrayList buscarNombreTiempo() {
+        if ((objReceta.getNombre() != null) || (objReceta.getTiempoCoccion() > 0)) {
+            recetaBusqueda = new ArrayList<>();
+            recetaBusqueda = recetaEJB.buscarNombreTiempo(objReceta.getNombre(), objReceta.getTiempoCoccion());
+            objReceta = null;
+            return recetaBusqueda;
+        }
+        return null;
     }
 
 }
