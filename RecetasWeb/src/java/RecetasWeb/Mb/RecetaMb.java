@@ -42,6 +42,12 @@ public class RecetaMb {
     *Array de tipo Receta
      */
     private ArrayList<Receta> alRecetas;
+    
+    /*
+    Array de tipo Receta
+    */
+    private ArrayList<Receta> Recetav;
+
 
     /*
     *Metodo init del ManageBean
@@ -52,6 +58,7 @@ public class RecetaMb {
             objReceta = new Receta();
             alRecetas = new ArrayList<>();
             alRecetas = recetaEJB.listarRecetas();
+            Recetav = new ArrayList<>();
         }
     }
 
@@ -64,21 +71,21 @@ public class RecetaMb {
 
     /*
     *Metodo Set de alRecetas
-    */
+     */
     public void setAlRecetas(ArrayList<Receta> alRecetas) {
         this.alRecetas = alRecetas;
     }
 
     /*
     *Metodo Get de objReceta
-    */
+     */
     public Receta getObjReceta() {
         return objReceta;
     }
 
     /*
     *Metodo Set de objReceta
-    */
+     */
     public void setObjReceta(Receta objReceta) {
         this.objReceta = objReceta;
     }
@@ -96,12 +103,25 @@ public class RecetaMb {
     public void setIngredientes(String ingredientes) {
         this.ingredientes = ingredientes;
     }
+/*
+    Metodo Get de Recetav
+    */
+    public ArrayList<Receta> getRecetav() {
+        return Recetav;
+    }
+    
+    /*
+    Metodo Set de Recetav
+    */
+    public void setRecetav(ArrayList<Receta> Recetav) {
+        this.Recetav = Recetav;
+    }
 
     /*
     * Metodo agregaReceta
     * Valida la informacion que se captura en el campo ingredientes,
     * la cual se convierte en un array y se asigna a la propiedad de receta
-    */
+     */
     public void agregarReceta() {
         try {
             if (objReceta != null) {
@@ -118,18 +138,42 @@ public class RecetaMb {
         }
 
     }
-    
+
     /*
     * Obtiene los ingredientes que el usuario digito 
     * devuelve un arraylist con todos los ingredientes
-    */
-    private ArrayList obtenerIngredientes(String cadenaIngredientes){
+     */
+    private ArrayList obtenerIngredientes(String cadenaIngredientes) {
         ArrayList<String> ArrayIngre = new ArrayList<>();
         String[] ArreloIngre = cadenaIngredientes.split(",");
-        for (String newIngre : ArreloIngre) {            
+        for (String newIngre : ArreloIngre) {
             ArrayIngre.add(newIngre.trim());
         }
         return ArrayIngre;
+    }
+    /*
+    *Obtiene los ingredientes a buscar 
+    *Devuelve una lista de recetas que obtienen estos ingredientes
+    */
+
+    public ArrayList<Receta> buscarIngrediente(String ingredientes) {
+
+        ArrayList<String> ListaIn = obtenerIngredientes(ingredientes);
+        for (int cont = 0; cont < alRecetas.size(); cont++) {
+            int conta = 0;
+            for (int i = 0; i < ListaIn.size(); i++) {
+                for (int j = 0; j <alRecetas.get(cont).getIngredientes().size(); j++) {
+                    if (alRecetas.get(cont).getIngredientes().get(j).equals(ListaIn.get(i))) {
+                        conta++;
+                    }
+
+                }
+                if (conta == ListaIn.size()) {
+                    Recetav.add(alRecetas.get(cont));
+                }
+            }
+        }
+        return Recetav;
     }
 
 }

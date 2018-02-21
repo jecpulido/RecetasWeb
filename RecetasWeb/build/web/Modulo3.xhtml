@@ -32,38 +32,11 @@
                     </div>
                     <h:form id="frmReg" styleClass="form-horizontal">
                         <div class="form-group">                            
-                            <h:outputLabel for="lbl-nombre" value="Nombre Receta" styleClass="control-label col-sm-2"></h:outputLabel>                
+                            <h:outputLabel for="lbl-ingredientes" value="Ingrese el Nombre del Ingrediente" styleClass="control-label col-sm-2"></h:outputLabel>                
                             <div class="col-sm-10">
-                                <h:inputText id="lbl-nombre" value="#{recetaMb.objReceta.nombre}" styleClass="form-control" required="true"/>
-                                <h:messages for="lbl-nombre" class="text-danger"/>
-                            </div>
-                        </div>
-                        <div class="form-group">   
-                            <h:outputLabel for="lbl-ingredientes" value="Ingredientes" styleClass="control-label col-sm-2"></h:outputLabel>                
-                            <div class="col-sm-10">              
-                                <h:inputTextarea id="lbl-ingredientes" value="#{recetaMb.ingredientes}" styleClass="form-control" required="true"/>
+                                <h:inputText id="lbl-ingredientes" value="#{recetaMb.ingredientes}" styleClass="form-control" required="true"/>
                                 <h:messages for="lbl-ingredientes" class="text-danger"/>
-                            </div>
-                        </div>
-                        <div class="form-group">   
-                            <h:outputLabel for="lbl-descripcion" value="Descripcion (Preparacion)" styleClass="control-label col-sm-2"></h:outputLabel>  
-                            <div class="col-sm-10">     
-                                <h:inputTextarea id="lbl-descripcion" value="#{recetaMb.objReceta.descripcion}" styleClass="form-control" required="true"/>
-                                <h:messages for="lbl-descripcion" class="text-danger"/>
-                            </div>
-                        </div>
-                        <div class="form-group">   
-                            <h:outputLabel for="lbl-tiempo" value="Tiempo Coccion (minutos)" styleClass="control-label col-sm-2"></h:outputLabel>     
-                            <div class="col-sm-10">     
-                                <h:inputText id="lbl-tiempo" value="#{recetaMb.objReceta.tiempoCoccion}" styleClass="form-control" required="true"/>
-                                <h:messages for="lbl-tiempo" class="text-danger"/>
-                            </div>
-                        </div>
-                        <div class="form-group">   
-                            <h:outputLabel styleClass="control-label col-sm-2"></h:outputLabel>     
-                            <div class="col-sm-10 right">     
-                                <h:commandButton value="Limpiar" type="reset" styleClass="btn btn-danger" style="margin-right: 10px"/>
-                                <h:commandButton value="Guardar" actionListener="#{recetaMb.agregarReceta}" styleClass="btn btn-primary">               
+                                <h:commandButton value="Buscar" actionListener="#{recetaMb.buscarIngrediente(recetaMb.ingredientes)}" styleClass="btn btn-primary">               
                                     <f:ajax render="@all" execute="@all"/>
                                 </h:commandButton>
                             </div>
@@ -74,7 +47,7 @@
                         Lista de Recetas
                     </h3>
                     <h:form id="frmTable" >    
-                        <h:dataTable value="#{recetaMb.alRecetas}" var="rec" styleClass="table table-responsive table-bordered table-striped table-">
+                        <h:dataTable value="#{recetaMb.recetav}" var="rec" styleClass="table table-responsive table-bordered table-striped table-">
                             <h:column>
                                 <f:facet name = "header">Nombre</f:facet>    				
                                     #{rec.nombre}
@@ -98,4 +71,3 @@
         </div>
     </h:body>    
 </html>
-
