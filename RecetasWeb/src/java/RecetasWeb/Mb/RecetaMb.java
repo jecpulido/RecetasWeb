@@ -131,23 +131,6 @@ public class RecetaMb {
         }
         return ArrayIngre;
     }
-    /*
-    * Obtiene lista de Recetas 
-    * devuelve un arraylist de todas las recetas de la bd
-    */
     
-    
-    private ArrayList ListReceta(String fnreceta){
-        ArrayList<String> listRecetaing = new ArrayList<>();
-        String[] recetaIng = fnreceta.split(",");
-        for (String newIngre : recetaIng) {            
-            listRecetaing.add(newIngre.trim());
-        }
-        for(int i = 0; i < listRecetaing.size(); i++){
-            
-        }
-        
-        return listRecetaing;
-    }
 
 }
