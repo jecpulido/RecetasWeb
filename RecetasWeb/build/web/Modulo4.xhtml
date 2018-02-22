@@ -7,7 +7,7 @@
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <title>Modulo 5</title>
+        <title>Recetas</title>
         <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
         <h:outputStylesheet library="css" name="myStyle.css"></h:outputStylesheet>
     </h:head>
@@ -19,48 +19,25 @@
                 </div>
                 <ul class="nav navbar-nav navbar-right">                    
                     <li><h:link value="Registrar" outcome="index"/></li>
-                    <li><a href="#">Módulo 1</a></li>
-                    <li><a href="#">Módulo 2</a></li>
-                    <li><a href="#">Módulo 3</a></li>
+                    <li><a href="#">Busqueda 1</a></li>
+                    <li><h:link value="Módulo 2" outcome="Modulo2"/></li>
+                    <li><a href="#">Busqueda 3</a></li>
                     <li><h:link value="Módulo 4" outcome="Modulo4"/></li>
                     <li><h:link value="Módulo 5" outcome="Modulo5"/></li>
                 </ul>
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <div class="page-header">
-                        <h1>Buscar Receta Por Nombre</h1>
-                    </div>
-                    <h:form id="frmReg" styleClass="form-horizontal">
-                        <div class="form-group">                            
-                            <h:outputLabel for="lbl-nombre" value="Nombre Receta" styleClass="control-label col-sm-2"></h:outputLabel>                
-                            <div class="col-sm-10">
-                                <h:inputText id="lbl-nombre" value="#{recetaMb.objReceta.nombre}" styleClass="form-control" required="true"/>
-                                <h:messages for="lbl-nombre" class="text-danger"/>
-                            </div>
-                        </div>
-                    </h:form>
+                    
                     <hr></hr>
                     <h3>
-                        Detalle De La Receta
+                        Lista de Recetas
                     </h3>
                     <h:form id="frmTable" >    
                         <h:dataTable value="#{recetaMb.alRecetas}" var="rec" styleClass="table table-responsive table-bordered table-striped table-">
                             <h:column>
                                 <f:facet name = "header">Nombre</f:facet>    				
                                     #{rec.nombre}
-                            </h:column>
-                            <h:column>
-                                <f:facet name = "header">Ingredientes</f:facet>    				
-                                #{rec.ingredientes[0]},#{rec.ingredientes[1]},...
-                            </h:column>
-                            <h:column>
-                                <f:facet name = "header">Descripcion</f:facet>    				
-                                    #{rec.descripcion}
-                            </h:column>
-                            <h:column>
-                                <f:facet name = "header">Tiempo Coccion</f:facet>    				
-                                    #{rec.tiempoCoccion}
                             </h:column>
                         </h:dataTable>
                     </h:form>
