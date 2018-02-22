@@ -48,4 +48,9 @@ public class RecetaEJB implements RecetaEJBLocal {
         }
     }
 
+    @Override
+    public ArrayList<Receta> ListReceta() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

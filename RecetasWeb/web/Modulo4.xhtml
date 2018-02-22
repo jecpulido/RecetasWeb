@@ -18,39 +18,36 @@
                     Recetas Web
                 </div>
                 <ul class="nav navbar-nav navbar-right">                    
-                    <li><a href="#">Registrar</a></li>
+                    <li><h:link value="Registrar" outcome="index"/></li>
                     <li><a href="#">Busqueda 1</a></li>
-                    <li><a href="findrecetanom.xhtml">Buscar Receta Nombre</a></li>
-                    <li><a href="#">Busqueda 3</a></li>
-                    <li><a href="#">Busqueda 4</a></li>
+                    <li><a href="#">Busqueda 2</a></li>
+                    <li><h:link value="Módulo 4" outcome="Modulo4"/></li>
+                    <li><h:link value="Módulo 5" outcome="Modulo5"/></li>
                 </ul>
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <div class="page-header">
-                        <h1>Registro Receta</h1>
-                    </div>
+                    
+                    <hr></hr>
+                   
                     <h:form id="frmReg" styleClass="form-horizontal">
                         <div class="form-group">                            
-                            <h:outputLabel for="lbl-nombre" value="Nombre Receta" styleClass="control-label col-sm-2"></h:outputLabel>                
+                            <h:outputLabel for="lbl-nombre" value="Buscar Receta" styleClass="control-label col-sm-2"></h:outputLabel>                
                             <div class="col-sm-10">
-                                <h:inputText id="lbl-nombre" value="#{recetaMb.objReceta.nombre}" styleClass="form-control" required="true"/>
-                                <h:messages for="lbl-nombre" class="text-danger"/>
+                                <h:inputText id="lbl-nombre" value="#{fnreceta}" styleClass="form-control" required="true"/>
                             </div>
                         </div>
-                       
                         <div class="form-group">   
                             <h:outputLabel styleClass="control-label col-sm-2"></h:outputLabel>     
                             <div class="col-sm-10 right">     
                                 <h:commandButton value="Limpiar" type="reset" styleClass="btn btn-danger" style="margin-right: 10px"/>
-                                <h:commandButton value="Guardar" actionListener="#{recetaMb.agregarReceta}" styleClass="btn btn-primary">               
+                                <h:commandButton value="Guardar" actionListener="#{recetaMb.listReceta}" styleClass="btn btn-primary">               
                                     <f:ajax render="@all" execute="@all"/>
                                 </h:commandButton>
                             </div>
                         </div>
                     </h:form>
-                    <hr></hr>
-                    <h3>
+                     <h3>
                         Lista de Recetas
                     </h3>
                     <h:form id="frmTable" >    
