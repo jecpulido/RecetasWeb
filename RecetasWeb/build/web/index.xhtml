@@ -20,7 +20,7 @@
                 <ul class="nav navbar-nav navbar-right">                    
                     <li><h:link value="Registrar" outcome="index"/></li>
                     <li><a href="#">Módulo 1</a></li>
-                    <li><a href="#">Módulo 2</a></li>
+                    <li><h:link value="Módulo 2" outcome="Modulo2"/></li>
                     <li><a href="#">Módulo 3</a></li>
                     <li><h:link value="Módulo 5" outcome="Modulo5"/></li>
                 </ul>
@@ -42,6 +42,9 @@
                             <h:outputLabel for="lbl-ingredientes" value="Ingredientes" styleClass="control-label col-sm-2"></h:outputLabel>                
                             <div class="col-sm-10">              
                                 <h:inputTextarea id="lbl-ingredientes" value="#{recetaMb.ingredientes}" styleClass="form-control" required="true"/>
+                                <small id="passwordHelpBlock" class="form-text text-muted">
+                                    Por favor escriba los ingredientes seprados por coma!.
+                                </small>
                                 <h:messages for="lbl-ingredientes" class="text-danger"/>
                             </div>
                         </div>

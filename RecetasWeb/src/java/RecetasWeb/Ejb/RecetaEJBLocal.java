@@ -23,4 +23,6 @@ public interface RecetaEJBLocal {
     public ArrayList<Receta> listarRecetas();
     
     
+    // Metodo para buscar por nombre y/o tiempo
+    public ArrayList<Receta> buscarNombreTiempo(String nombre, int tiempo);
 }
