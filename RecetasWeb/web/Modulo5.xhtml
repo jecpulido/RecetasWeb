@@ -19,8 +19,7 @@
                 </div>
                 <ul class="nav navbar-nav navbar-right">                    
                     <li><h:link value="Registrar" outcome="index"/></li>
-                    <li><a href="#">Módulo 1</a></li>
-                    <li><a href="#">Módulo 2</a></li>
+                    <li><h:link value="Módulo 2" outcome="Modulo2"/></li>
                     <li><h:link value="Módulo 3" outcome="Modulo3"/></li>
                     <li><h:link value="Módulo 4" outcome="Modulo4"/></li>
                     <li><h:link value="Módulo 5" outcome="Modulo5"/></li>
@@ -31,39 +30,33 @@
                     <div class="page-header">
                         <h1>Buscar Receta Por Nombre</h1>
                     </div>
-                    <h:form id="frmReg" styleClass="form-horizontal">
+                    <h:form id="form-search" styleClass="form-horizontal">
                         <div class="form-group">                            
                             <h:outputLabel for="lbl-nombre" value="Nombre Receta" styleClass="control-label col-sm-2"></h:outputLabel>                
                             <div class="col-sm-10">
-                                <h:inputText id="lbl-nombre" value="#{recetaMb.objReceta.nombre}" styleClass="form-control" required="true"/>
+                                <h:inputText id="lbl-nombre" value="#{recetaMb.objReceta.nombre}" styleClass="form-control" required="true" requiredMessage="El nombre de la receta es requerido"/>
                                 <h:messages for="lbl-nombre" class="text-danger"/>
+                                <h:commandButton value="Buscar" actionListener="#{recetaMb.buscarRecetaModuloSebastian5()}" styleClass="btn btn-primary">               
+                                    <f:ajax render="@all" execute="@all"/>
+                                </h:commandButton>
                             </div>
                         </div>
                     </h:form>
                     <hr></hr>
-                    <h3>
-                        Detalle De La Receta
+                    <h3 style="text-align: center; margin-bottom: 23px">
+                        DETALLE DE LA RECETA
                     </h3>
-                    <h:form id="frmTable" >    
-                        <h:dataTable value="#{recetaMb.alRecetas}" var="rec" styleClass="table table-responsive table-bordered table-striped table-">
-                            <h:column>
-                                <f:facet name = "header">Nombre</f:facet>    				
-                                    #{rec.nombre}
-                            </h:column>
-                            <h:column>
-                                <f:facet name = "header">Ingredientes</f:facet>    				
-                                #{rec.ingredientes[0]},#{rec.ingredientes[1]},...
-                            </h:column>
-                            <h:column>
-                                <f:facet name = "header">Descripcion</f:facet>    				
-                                    #{rec.descripcion}
-                            </h:column>
-                            <h:column>
-                                <f:facet name = "header">Tiempo Coccion</f:facet>    				
-                                    #{rec.tiempoCoccion}
-                            </h:column>
-                        </h:dataTable>
-                    </h:form>
+                    <h:form id="form-2">
+                        <h4>Nombre De La Receta</h4>
+                        <h:outputText value = "#{recetaMb.nombreReceta}" rendered="#{not empty recetaMb.objReceta.nombre}"/>
+                        <h4>Ingredientes</h4>
+                        <h:outputText value = "#{recetaMb.ingredientes}" rendered="#{not empty recetaMb.objReceta.nombre}"/>
+                        <h4>Preparación</h4>
+                        <h:outputText value = "#{recetaMb.descripcion}" rendered="#{not empty recetaMb.objReceta.nombre}"/>
+                        <h4>Tiempo en Cocción</h4>
+                        <h:outputText value = "#{recetaMb.tiempoCoccion}" rendered="#{not empty recetaMb.objReceta.nombre}"/>
+                    </h:form>                   
+
                 </div>
             </div>
         </div>

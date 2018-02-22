@@ -47,7 +47,22 @@ public class RecetaMb {
     Array de tipo Receta
     */
     private ArrayList<Receta> Recetav;
-
+    /*
+    Nombre de la receta
+    */
+    private String nombreReceta;
+    /*
+    Array de los ingredientes
+    */
+    private ArrayList<String> listaIngredientes;
+    /*
+    Descripción de la receta
+    */
+    private String descripcion;
+    /*
+    Timpo de cocción de la receta
+    */
+    private int tiempoCoccion;
     /*
     *Metodo init del ManageBean
      */
@@ -202,6 +217,55 @@ public class RecetaMb {
             }
         }
         return Recetav;
+    }
+    
+     public void buscarRecetaModuloSebastian5() {
+        try {
+            Receta recetaObtenida;
+            recetaObtenida = this.recetaEJB.ObtenerRecetaModulo5(this.objReceta.getNombre());
+            this.nombreReceta = recetaObtenida.getNombre();
+            this.descripcion = recetaObtenida.getDescripcion();
+            this.tiempoCoccion = recetaObtenida.getTiempoCoccion();
+            this.ingredientes = this.listToStringIngredientes(recetaObtenida);
+        } catch (Exception e) {
+            System.out.println("" + e.getMessage());
+        }
+    }
+
+    private String listToStringIngredientes(Receta receta) {
+        return this.recetaEJB.lisToStringIngredientes(receta);
+    }
+
+    public String getNombreReceta() {
+        return nombreReceta;
+    }
+
+    public void setNombreReceta(String nombreReceta) {
+        this.nombreReceta = nombreReceta;
+    }
+
+    public ArrayList<String> getListaIngredientes() {
+        return listaIngredientes;
+    }
+
+    public void setListaIngredientes(ArrayList<String> listaIngredientes) {
+        this.listaIngredientes = listaIngredientes;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public int getTiempoCoccion() {
+        return tiempoCoccion;
+    }
+
+    public void setTiempoCoccion(int tiempoCoccion) {
+        this.tiempoCoccion = tiempoCoccion;
     }
 
 }

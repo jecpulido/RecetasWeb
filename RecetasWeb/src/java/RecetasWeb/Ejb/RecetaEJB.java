@@ -79,5 +79,30 @@ public class RecetaEJB implements RecetaEJBLocal {
             throw e;
         }
     }
+    
+    @Override
+    public Receta ObtenerRecetaModulo5(String name) {
+        Receta recetaObtenida = new Receta();
+        for (int i = 0; i < this.recetas.size(); i++) {
+            if (name.equalsIgnoreCase(this.recetas.get(i).getNombre())) {
+                recetaObtenida = this.recetas.get(i);
+            }
+        }
+        return recetaObtenida;
+    }
+
+    @Override
+    public String lisToStringIngredientes(Receta receta) {
+        String cadena = "";
+        ArrayList<String> ingre = receta.getIngredientes();
+        for (int i = 0; i < ingre.size(); i++) {
+            if (i == ingre.size() - 1) {
+                cadena = cadena + ingre.get(i);
+            } else {
+                cadena = cadena + ingre.get(i) + ", ";
+            }
+        }
+        return cadena;
+    }
 
 }
