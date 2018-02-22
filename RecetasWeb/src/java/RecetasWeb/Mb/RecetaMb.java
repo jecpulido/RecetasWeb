@@ -42,6 +42,11 @@ public class RecetaMb {
     *Array de tipo Receta
      */
     private ArrayList<Receta> alRecetas;
+    
+    /*
+    Array de tipo Receta
+    */
+    private ArrayList<Receta> Recetav;
 
     /*
     *Metodo init del ManageBean
@@ -52,6 +57,7 @@ public class RecetaMb {
             objReceta = new Receta();
             alRecetas = new ArrayList<>();
             alRecetas = recetaEJB.listarRecetas();
+            Recetav = new ArrayList<>();
         }
     }
 
@@ -95,6 +101,20 @@ public class RecetaMb {
      */
     public void setIngredientes(String ingredientes) {
         this.ingredientes = ingredientes;
+    }
+    
+    /*
+    Metodo Get de Recetav
+    */
+    public ArrayList<Receta> getRecetav() {
+        return Recetav;
+    }
+    
+    /*
+    Metodo Set de Recetav
+    */
+    public void setRecetav(ArrayList<Receta> Recetav) {
+        this.Recetav = Recetav;
     }
 
     /*
@@ -159,6 +179,29 @@ public class RecetaMb {
             return recetaBusqueda;
         }
         return null;
+    }
+    
+    public ArrayList<Receta> buscarIngrediente(String ingredientes) {
+
+        ArrayList<String> ListaIn = obtenerIngredientes(ingredientes);
+        for (int cont = 0; cont < alRecetas.size(); cont++) {
+            int conta = 0;
+            for (int i = 0; i < ListaIn.size(); i++) {
+                for (int j = 0; j <alRecetas.get(cont).getIngredientes().size(); j++) {
+                    if (alRecetas.get(cont).getIngredientes().get(j).equals(ListaIn.get(i))) {
+                        conta++;
+                    }
+
+                }
+                if (conta == ListaIn.size()) {
+                    Recetav.add(alRecetas.get(cont));
+                }
+                else if(conta <ListaIn.size()){
+                Recetav.isEmpty();
+                }
+            }
+        }
+        return Recetav;
     }
 
 }
